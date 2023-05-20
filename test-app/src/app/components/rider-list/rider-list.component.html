@@ -1,0 +1,31 @@
+<main class="">
+    <section class="">
+        <div class="container">
+            <table class="table table-striped">
+                <thead class="thead bg-primary text-white">
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">rider</th>
+                        <th scope="col">identidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let rider of rider.correlatives">
+                        <td>{{ rider.id }}</td>
+                        <td>{{ rider.rider }}</td>
+                        <td>{{ rider.identidad }}</td>
+                        <td (click) = "view(ver, rider)"></td>
+                        <td (click) = "delete(rider.id)"></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td><input [(ngModel)] = "rider"></td>
+                        <td><input [(ngModel)] = "identidad"></td>
+                        <td><button (click) = "add()">add</button></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </section>
+</main>
