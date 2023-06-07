@@ -1,6 +1,9 @@
+import { Programa } from "./programa"
+
 export class Rider{
     id: number
     rider: string
     identidad: string
-    correlatives: Array<Rider>
+    apariciones: Array<Programa>
+
 }

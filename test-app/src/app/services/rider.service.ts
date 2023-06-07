@@ -8,7 +8,7 @@ import { Rider } from '../models/rider';
 })
 export class RiderService {
 
-  private url = 'http://localhost:4200/rider'
+  private url = 'http://localhost:8080/rider'
   
   constructor(private http: HttpClient) { }
 
@@ -17,15 +17,19 @@ export class RiderService {
   }
 
   delete(id: number): Observable<any>{
-    return this.http.post(this.url + '/{id}/delete', null)
+    return this.http.post(this.url + '/' + id + '/delete', null)
   }
 
   add(rider: Rider): Observable<any>{
     return this.http.post(this.url, rider)
   }
 
-  view(ver: any, r: Rider){
-    
+  view(ver: any, r: Rider): Observable<any>{
+    return this.http.get(this.url)
+  }
+
+  update(rider: Rider): Observable<any>{
+    return this.http.post(this.url + '/' + rider.id + '/update', rider)
   }
   
 }

@@ -1,31 +1,52 @@
 <main class="">
-    <section class="">
-        <div class="container">
-            <table class="table table-striped">
-                <thead class="thead bg-primary text-white">
-                    <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">rider</th>
-                        <th scope="col">identidad</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let rider of rider.correlatives">
-                        <td>{{ rider.id }}</td>
-                        <td>{{ rider.rider }}</td>
-                        <td>{{ rider.identidad }}</td>
-                        <td (click) = "view(ver, rider)"></td>
-                        <td (click) = "delete(rider.id)"></td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td><input [(ngModel)] = "rider"></td>
-                        <td><input [(ngModel)] = "identidad"></td>
-                        <td><button (click) = "add()">add</button></td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-    </section>
+  <section class="">
+    <div class="container">
+      <table class="table table-striped">
+        <thead class="thead bg-primary text-white">
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">rider</th>
+            <th scope="col">identidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let rider of riderList">
+            <td>{{ rider.id }}</td>
+            <td>{{ rider.rider }}</td>
+            <td>{{ rider.identidad }}</td>
+            <td><button (click)="view(ver, rider)">view</button></td>
+            <td><button (click)="delete(rider.id)">delete</button></td>
+          </tr>
+        </tbody>
+        </table>
+        <form [formGroup]="riderForm">
+          <table>
+            <tfoot>
+              <form [formGroup]="riderForm"></form>
+              <tr>
+                <td></td>
+                <td><input formControlName="rider" /></td>
+                <td><input formControlName="identidad" /></td>
+                <td>
+                  <select formControlName="programa">
+                    <option *ngFor="let programa of programaList" [ngValue]="programa">{{programa.serie}}</option>
+                  </select>
+                </td>
+                <td><button (click)="add()">add</button></td>
+              </tr>
+            </tfoot>
+          </table>
+        </form>
+    </div>
+  </section>
 </main>
+
+<ng-template #ver let-modal>
+  <tr>
+    <td><input [(ngModel)]="rider2" /></td>
+    <td><input [(ngModel)]="identidad2" /></td>
+    <td><button (click)="modal.close()">update</button></td>
+  </tr>
+
+
+</ng-template>

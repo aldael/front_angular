@@ -5,8 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RiderListComponent } from './components/rider-list/rider-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgModel } from '@angular/forms';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
   declarations: [
@@ -17,8 +17,9 @@ import { FormsModule } from '@angular/forms'
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgModule,
-    FormsModule
+    FormsModule,
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
