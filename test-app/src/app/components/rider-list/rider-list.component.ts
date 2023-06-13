@@ -19,7 +19,7 @@ export class RiderListComponent implements OnInit{
   id2: number
   rider2: string
   identidad2: string
-  
+  shows = Array<Programa>()
   r = new Rider()
 
   riderForm: FormGroup
@@ -32,7 +32,7 @@ export class RiderListComponent implements OnInit{
       this.riderForm = new FormGroup({
         'rider': new FormControl(this.r.rider, Validators.required),
         'identidad': new FormControl(this.r.identidad, Validators.required),
-        'programa': new FormControl(this.r.apariciones)
+        'programa': new FormControl(this.r.programas)
       })
 
       this.riderService.getAll().subscribe((totalResponse: any) => {
@@ -67,11 +67,10 @@ export class RiderListComponent implements OnInit{
 
   add(){
     let rider = new Rider()
-    let shows = []
     rider.identidad = this.identidad?.value
     rider.rider = this.rider?.value
-    shows.push(this.programa?.value)
-    rider.apariciones = shows
+    rider.programas = [this.programa?.value]
+    alert(rider.programas[0])
 
  /* guardar en array de programs que esta dentro de rider el objeto que seleccionas de la lista */
     this.riderService.add(rider).subscribe(() =>{

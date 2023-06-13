@@ -4,6 +4,6 @@ export class Rider{
     id: number
     rider: string
     identidad: string
-    apariciones: Array<Programa>
+    programas: Array<Programa>
 
 }
